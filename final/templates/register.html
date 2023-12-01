@@ -1,0 +1,33 @@
+{% extends "layout.html"%}
+
+{% block main %}
+<div>
+    <h2><b>If you want to join our team, feel free to register!</b></h2><br>
+    <form action="/register", method="post">
+        <input type="text" placeholder="Full Name" name="name">
+        <select name="role">
+            <option value='documentation'>Documentation</option>
+            <option value='social media manager'>Social media manager</option>
+            <option value='website manager'>Website manager</option>
+            <option value='others'>Others</option>
+        </select>
+        <button type="submit">Post</button>
+    </form>
+</div><br>
+<h4>Registrants</h4><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in registrants %}
+        <tr>
+            <td>{{ row["name"] }}</td>
+            <td>{{ row["role"] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}

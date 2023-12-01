@@ -1,0 +1,37 @@
+{% extends "layout.html"%}
+
+{% block main %}
+<div>
+    <h2><b>Go ahead and post your questions here!</b></h2><br>
+    <form action="/forum", method="post">
+        <input type="text" placeholder="Ask a question" name="question">
+        <button type="submit">Post</button>
+    </form>
+</div><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Question</th>
+            <th>Reply</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in questions %}
+        <tr>
+            <td>{{ row["user"] }}</td>
+            <td>{{ row["question"] }}</td>
+            {% if row["reply"] != 0 %}
+                <td>
+                <form action="/reply", method="get">
+                    <input type="hidden" name="reply" id="reply" value='{{ row["reply"] }}'>
+                    <button type="submit">View Reply</button>
+                </form>
+                </td>
+            {% else %}
+                <td>no replies yet</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div>
+    <h2><b>Do you want to see a food forest yourself?</b></h2><br>
+    <h3>You can help us build the forest by donating us some money. Your donation would mean a lot for us!</h3><br>
+    <form action="/donate", method="post">
+        <input type="number" placeholder="Amount to donate" name="donate" min=1>
+        <button type="submit">Donate</button>
+    </form>
+</div><br><br>
+<div>Donations received: ￥ {{ donate }} </div>
+{% endblock %}
